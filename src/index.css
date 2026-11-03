@@ -26,6 +26,7 @@ body {
   margin: 0;
 }
 
+/* Header & Brand Logo Adjustments */
 .header {
   display: flex;
   justify-content: space-between;
@@ -35,19 +36,43 @@ body {
   color: #fff;
 }
 
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
 .logo {
   margin: 0;
   font-size: 1.4rem;
+  color: #ffffff !important;
+  font-weight: 700;
 }
 
 .nav {
   display: flex;
   gap: 1.25rem;
+  align-items: center;
 }
 
 .nav a {
   color: #fff;
   text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  font-weight: 700;
 }
 
 .badge {
@@ -70,6 +95,7 @@ body {
   margin: 1.5rem 0 0.75rem;
 }
 
+/* Grid & Cards System */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -81,6 +107,7 @@ body {
   border-radius: var(--radius);
   padding: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
 .card h2,
@@ -161,6 +188,35 @@ body {
   font-size: 0.85rem;
 }
 
+/* Category Filter Bar (Modern Pill Buttons) */
+.category-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  background: #e4e7eb;
+  color: var(--text);
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.category-btn:hover {
+  background: #d0d5dd;
+}
+
+.category-btn.active {
+  background: var(--green);
+  color: #ffffff;
+}
+
 /* Week 2 additions */
 .vendor-grid {
   display: grid;
@@ -200,7 +256,7 @@ button.card:hover {
   font-weight: 600;
 }
 
-/* Week 3 additions */
+/* Week 3 additions (Cart & Form) */
 .link {
   background: none;
   border: 0;
@@ -290,10 +346,11 @@ button.card:hover {
 
 .form input,
 .form select {
-  padding: 0.5rem;
+  padding: 0.55rem;
   border: 1px solid #c5cbd3;
   border-radius: 8px;
   font: inherit;
+  width: 100%;
 }
 
 .form .btn {
@@ -311,11 +368,6 @@ button.card:hover {
 }
 
 /* Week 4 additions */
-.nav a.active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-
 .logo-link {
   color: #fff;
   text-decoration: none;
@@ -366,10 +418,6 @@ a.card:hover {
 .user-name {
   opacity: 0.9;
   font-size: 0.9rem;
-}
-
-.nav {
-  align-items: center;
 }
 
 /* Week 6 additions */
@@ -484,7 +532,7 @@ a.card:hover {
   font-weight: 600;
 }
 
-/* Week 9: an installable app must fit a phone screen */
+/* Mobile Responsiveness */
 @media (max-width: 640px) {
   .header {
     flex-wrap: wrap;
@@ -503,106 +551,176 @@ a.card:hover {
   }
 }
 
-.link {
-  background: none;
-  border: 0;
-  padding: 0;
-  font: inherit;
-  color: #fff;
-  cursor: pointer;
-}
-
-.link.danger {
-  color: #b3261e;
-  font-size: 0.9rem;
-}
-
-.cart-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1rem;
-  align-items: start;
-}
-
-@media (max-width: 720px) {
-  .cart-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-.cart-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cart-line {
-  display: grid;
-  grid-template-columns: 1fr auto auto auto;
-  gap: 1rem;
+/* Vendor Card Styling */
+button.card.vendor-card {
+  display: flex;
   align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e4e7eb;
+  gap: 1rem;
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid #e4e7eb;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.cart-name {
+button.card.vendor-card:hover {
+  border-color: var(--green-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+button.card.vendor-card.selected {
+  border: 2px solid var(--green);
+  box-shadow: 0 4px 12px rgba(0, 104, 94, 0.15);
+}
+
+.vendor-card .thumb {
+  margin-bottom: 0;
+  width: 56px;
+  height: 56px;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.vendor-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vendor-info h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.vendor-info p.muted {
   margin: 0;
-  font-weight: 600;
+  font-size: 0.85rem;
 }
 
-.qty {
+/* Menu Item Card Styling */
+.menu-item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.item-title {
+  margin: 0.25rem 0;
+}
+
+.item-description {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.item-price {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+/* HomePage Sections & Sorting Styling */
+.section-vendor {
+  margin-bottom: 2rem;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.menu-header h2 {
+  margin: 0;
+}
+
+.sort-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.qty button {
-  width: 32px;
-  height: 32px;
+.sort-container label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sort-select {
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
   border: 1px solid #c5cbd3;
+  font: inherit;
+  font-size: 0.88rem;
   background: #fff;
   cursor: pointer;
 }
 
-.line-total {
-  font-weight: 600;
-  margin: 0;
-}
-
-.cart-total {
-  text-align: right;
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 1rem 0 0;
-}
-
-.form {
+/* Orders Page Styling */
+.orders-container {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 1rem;
 }
 
-.form label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+.order-card {
+  display: flex;
+  flex-direction: column;
 }
 
-.form input,
-.form select {
-  padding: 0.5rem;
-  border: 1px solid #c5cbd3;
-  border-radius: 8px;
-  font: inherit;
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border, #eee);
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.field-error {
-  color: #b3261e;
+.order-info {
+  margin: 0.5rem 0 0.25rem 0;
+}
+
+.order-items-list {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.order-note {
+  display: block;
+  color: var(--muted, #666);
   font-size: 0.85rem;
-  margin: 0;
+  font-style: italic;
 }
 
-.error {
-  border-left: 4px solid #b3261e;
+.order-total-text {
+  font-weight: bold;
+  margin: 0.5rem 0 0 0;
+  text-align: right;
 }
